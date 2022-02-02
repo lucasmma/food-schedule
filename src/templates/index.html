@@ -19,9 +19,10 @@
       }
     </script>
     <style>
+
       body{
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         background-color: #54e4fda1;
       }
 
@@ -64,8 +65,13 @@
       }
 
       .container {
+        display: flex;
         flex-direction: column;
         width: 150px;
+      }
+      .outer-container{
+        display: flex;
+        flex-direction: row;
       }
 
       #foods {
@@ -80,20 +86,23 @@
   </head>
 
   <body>
-    <div class='container'>
+    <h1>Bubbie`s diary</h1>
+    <div class='outer-container'>
+      <div class='container'>
         <label>Refeições feitas</label>
         {% for food in foods %}
           <div id='foods'>{{ food }}</div>
         {% endfor %}
-    </div>
-    <form class='container'>
-      <label>Comida (A / L / R)</label>
-      <input id='food'></input>
-      <br>
-      <label>Horário (hh:mm)</label>
-      <input id='schedule' grouplength="3" data-delimiter=","></input>
-      <br>
-      <button onclick="return register_meal()">Cadastrar</button>
+      </div>
+      <form class='container'>
+        <label>Comida (A / L / R)</label>
+        <input id='food'></input>
+        <br>
+        <label>Horário (hh:mm)</label>
+        <input id='schedule' grouplength="3" data-delimiter=","></input>
+        <br>
+        <button onclick="return register_meal()">Cadastrar</button>
+      </div>
     </div>
   </body>
 
