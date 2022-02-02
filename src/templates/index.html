@@ -50,12 +50,23 @@
         flex-direction: column;
         width: 150px;
       }
+
+      #foods {
+        color: #514F59;
+        font-size: 10px;
+        line-height: 10px;
+        font-weight: 700;
+        font-family: 'Roboto', sans-serif;
+      }
     </style>
   </head>
 
   <body>
     <div class='container'>
         <label>Refeições feitas</label>
+        {% for food in foods }
+          <div id='foods'> </div>
+        {% endfod %}
     </div>
     <div class='container'>
       <label>Comida (A / L / R)</label>

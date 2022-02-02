@@ -5,7 +5,7 @@ app = Flask(__name__, template_folder='templates')
 
 @app.route("/")
 def main():
-  return render_template('index.html', recent_meals=get_recent_meals())
+  return render_template('index.html', foods=get_recent_meals())
 
 
 @app.route("/recentMeals", methods=["POST", "GET"])
