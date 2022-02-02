@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, Response, redirect, url_for
 from infra import append_data_on_database, read_database
+from utils import get_todays_timestamp, get_current_date, date_to_timestamp, get_current_timestamp
 import traceback
 from datetime import date
 
@@ -19,7 +20,15 @@ def main():
 @app.route("/recentMeals", methods=["GET"])
 def get_recent_meals():
   try:
-    return read_database()
+    db = read_database()
+    current_timestamp = get_current_timestamp()
+    todays_meals = []
+    for data in db:
+      if current_timestamp >= data['date']:
+        todays_meals.append(data)
+
+    return todays_meals
+
   except Exception:
     print(traceback.format_exc())
     return 'erro'
@@ -32,6 +41,7 @@ def register_meal():
     data = {
       'food': food,
       'schedule': schedule,
+      'date': get_todays_timestamp()
     }
     append_data_on_database(data)
     return data
