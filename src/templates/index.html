@@ -4,6 +4,9 @@
     <title>Bubbie's Diary</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
+      $(document).ready(function(){
+        $("#schedule").inputmask("99:99");
+      });
       function register_meal() {
         $.ajax({
           url: "/registerMeal",
@@ -102,8 +105,8 @@
         <label>Comida (A / L / R)</label>
         <input id='food'></input>
         <br>
-        <label>Horário (hh:mm)</label>
-        <input id='schedule' grouplength="3" data-delimiter=","></input>
+        <label >Horário (hh:mm)</label>
+        <input id='schedule' type='time'></input>
         <br>
         <button onclick="return register_meal()">Cadastrar</button>
       </div>
