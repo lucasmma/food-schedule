@@ -2,10 +2,27 @@
 
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      function register_meal() {
+        $.ajax({
+          url: "/registerMeal",
+          type: "POST",
+          data: {schedule: $("#schedule").val(), food: $("#food").val()},
+          success: function(response) {
+            location.reload()
+          },
+          error: function(xhr) {
+            //Do Something to handle error
+          }
+        });
+        return false
+      }
+    </script>
     <style>
       body{
         display: flex;
         flex-direction: row;
+        background-color: #54e4fda1;
       }
 
       input {
@@ -53,7 +70,8 @@
 
       #foods {
         color: #514F59;
-        font-size: 10px;
+        padding: 6px 0px;
+        font-size: 15px;
         line-height: 10px;
         font-weight: 700;
         font-family: 'Roboto', sans-serif;
@@ -64,18 +82,18 @@
   <body>
     <div class='container'>
         <label>Refeições feitas</label>
-        {% for food in foods }
-          <div id='foods'> </div>
-        {% endfod %}
+        {% for food in foods %}
+          <div id='foods'>{{ food }}</div>
+        {% endfor %}
     </div>
-    <div class='container'>
+    <form class='container'>
       <label>Comida (A / L / R)</label>
       <input id='food'></input>
       <br>
       <label>Horário (hh:mm)</label>
-      <input id='schedule'></input>
+      <input id='schedule' grouplength="3" data-delimiter=","></input>
       <br>
-      <button>Cadastrar</button>
+      <button onclick="return register_meal()">Cadastrar</button>
     </div>
   </body>
 
