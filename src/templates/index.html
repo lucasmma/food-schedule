@@ -1,6 +1,7 @@
 <html>
 
   <head>
+    <title>Bubbie's Diary</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
       function register_meal() {
@@ -9,7 +10,7 @@
           type: "POST",
           data: {schedule: $("#schedule").val(), food: $("#food").val()},
           success: function(response) {
-            location.reload()
+            // location.reload()
           },
           error: function(xhr) {
             //Do Something to handle error
@@ -21,9 +22,11 @@
     <style>
 
       body{
-        display: flex;
-        flex-direction: column;
         background-color: #54e4fda1;
+      }
+
+      h2{
+        margin-top: 0;
       }
 
       input {
@@ -87,11 +90,12 @@
 
   <body>
     <h1>Bubbie`s diary</h1>
+    <h2> dia {{ date }}</h2>
     <div class='outer-container'>
       <div class='container'>
         <label>Refeições feitas</label>
         {% for food in foods %}
-          <div id='foods'>{{ food }}</div>
+          <div id='foods'>{{ food['schedule'] }} -> {{ food['food']}}</div>
         {% endfor %}
       </div>
       <form class='container'>
