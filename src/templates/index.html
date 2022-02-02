@@ -1,0 +1,71 @@
+<html>
+
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+      body{
+        display: flex;
+        flex-direction: row;
+      }
+
+      input {
+        display: flex;
+        background-color: #6D72C3;
+        border-radius: 100px;
+        height: 20px;
+        border: none;
+        color: white;
+        padding: 15px;
+        margin-bottom: 5px;
+        margin-top: 10px;
+      }
+
+      label {
+        font-size: 15px;
+        line-height: 15px;
+        font-weight: 700;
+        color: #5941A9;
+        font-family: 'Roboto', sans-serif;
+      }
+
+      button {
+        font-size: 10px;
+        line-height: 10px;
+        font-weight: 700;
+        font-family: 'Roboto', sans-serif;
+        text-transform: uppercase;
+        color: #1D1128;
+        cursor: pointer;
+        background-color: transparent;
+        border: 2px solid #1D1128;
+        border-radius: 100px;
+        height: 20px;
+        padding-left: 25px;
+        padding-right: 25px;
+        padding-top: 5px;
+        padding-bottom: 15px;
+      }
+
+      .container {
+        flex-direction: column;
+        width: 150px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class='container'>
+        <label>Refeições feitas</label>
+    </div>
+    <div class='container'>
+      <label>Comida ()</label>
+      <input id='food'></input>
+      <br>
+      <label>Horário (hh:mm)</label>
+      <input id='schedule'></input>
+      <br>
+      <button>Cadastrar</button>
+    </div>
+  </body>
+
+</html>
