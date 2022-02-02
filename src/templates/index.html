@@ -29,6 +29,10 @@
       }
 
       h2{
+        margin: 0;
+      }
+
+      h4{
         margin-top: 0;
       }
 
@@ -93,7 +97,8 @@
 
   <body>
     <h1>Bubbie`s diary</h1>
-    <h2> dia {{ date }}</h2>
+    <h2>dia {{ date }}</h2>
+    <h4> *A- agua, L - legumes, R - ração, B - batata </h2>
     <div class='outer-container'>
       <div class='container'>
         <label>Refeições feitas</label>
@@ -102,7 +107,7 @@
         {% endfor %}
       </div>
       <form class='container'>
-        <label>Comida (A / L / R)</label>
+        <label>Comida (A/L/R/B)*</label>
         <input id='food'></input>
         <br>
         <label >Horário (hh:mm)</label>
