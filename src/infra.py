@@ -6,7 +6,6 @@ def append_data_on_database(new_data, filename='database.json'):
     with open(filename,'r+') as file:
         # First we load existing data into a dict.
         file_data = json.load(file)
-        print(file)
         # Join new_data with file_data inside emp_details
         file_data.append(new_data)
         # Sets file's current position at offset.
