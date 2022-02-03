@@ -45,7 +45,7 @@ def register_meal():
         'schedule': schedule,
         'date': get_current_timestamp()
       }
-      # append_data_on_database(data)
+      append_data_on_database(data)
       return data
   except Exception as err:
     print(traceback.format_exc())
