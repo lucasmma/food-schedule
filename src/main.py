@@ -21,10 +21,10 @@ def main():
 def get_recent_meals():
   try:
     db = read_database()
-    current_timestamp = get_current_timestamp()
+    current_timestamp = get_todays_timestamp()
     todays_meals = []
     for data in db:
-      if current_timestamp >= data['date']:
+      if current_timestamp <= data['date']:
         todays_meals.append(data)
 
     return todays_meals
@@ -41,7 +41,7 @@ def register_meal():
     data = {
       'food': food,
       'schedule': schedule,
-      'date': get_todays_timestamp()
+      'date': get_current_timestamp()
     }
     append_data_on_database(data)
     return data
