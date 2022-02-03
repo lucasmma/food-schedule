@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, Response, redirect, url_for
+from flask import Flask, render_template, request, Response, redirect, url_for, abort
 from infra import append_data_on_database, read_database
 from utils import get_todays_timestamp, get_current_date, date_to_timestamp, get_current_timestamp
 import traceback
@@ -31,20 +31,22 @@ def get_recent_meals():
 
   except Exception:
     print(traceback.format_exc())
-    return 'erro'
 
 @app.route("/registerMeal", methods=["POST"])
 def register_meal():
   try:
     food = request.form['food']
     schedule = request.form['schedule']
-    data = {
-      'food': food,
-      'schedule': schedule,
-      'date': get_current_timestamp()
-    }
-    append_data_on_database(data)
-    return data
+    if len(food) > 10 or not('R' in food or 'RM' in food or 'B' in food or 'A' in food or 'L' in food or '/' in food) or len(food) == 10:
+      return 'erro', 400
+    else:
+      data = {
+        'food': food,
+        'schedule': schedule,
+        'date': get_current_timestamp()
+      }
+      # append_data_on_database(data)
+      return data
   except Exception as err:
     print(traceback.format_exc())
 
