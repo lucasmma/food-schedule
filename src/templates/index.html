@@ -26,12 +26,24 @@
         background-color: #54e4fda1;
       }
 
+      h1{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
       h2{
         margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       h4{
         margin-top: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       input {
@@ -78,9 +90,20 @@
         flex-direction: column;
         width: 150px;
       }
-      .outer-container{
+
+      .container-form {
         display: flex;
         flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .outer-container{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
       }
 
       #foods {
@@ -91,6 +114,11 @@
         font-weight: 700;
         font-family: 'Roboto', sans-serif;
       }
+
+      .horizontal-spacer {
+        width: 10px;
+        height: 10px;
+      }
     </style>
   </head>
 
@@ -99,20 +127,22 @@
     <h2>dia {{ date }}</h2>
     <h4> *A -água, L -legumes, R -ração, B -batata, RM -remédio</h2>
     <div class='outer-container'>
+      <form class='container-form'>
+        <label>Comida (A/L/R/B/RM)*</label>
+        <div class="horizontal-spacer"></div>
+        <input id='food'></input>
+        <div class="horizontal-spacer"></div>
+        <label >Horário (hh:mm)</label>
+        <div class="horizontal-spacer"></div>
+        <input id='schedule' type='time'></input>
+        <div class="horizontal-spacer"></div>
+        <button onclick="return register_meal()">Cadastrar</button>
+      </form>
       <div class='container'>
         <label>Refeições feitas</label>
         {% for food in foods %}
           <div id='foods'>{{ food['schedule'] }} -> {{ food['food']}}</div>
         {% endfor %}
-      </div>
-      <form class='container'>
-        <label>Comida (A/L/R/B/RM)*</label>
-        <input id='food'></input>
-        <br>
-        <label >Horário (hh:mm)</label>
-        <input id='schedule' type='time'></input>
-        <br>
-        <button onclick="return register_meal()">Cadastrar</button>
       </div>
     </div>
   </body>
